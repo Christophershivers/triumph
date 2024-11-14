@@ -1,0 +1,20 @@
+.wrapper {
+    height: 100vh;
+    background-size: cover;
+    background-image: url('../../../img/friends.jpg');
+}
+
+.form {
+    border-right: 1px solid var(--mantine-color-gray-3);
+    height: 100vh;
+    max-width: 600px;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    color: var(--mantine-color-black);
+    font-family: "Greycliff CF", var(--mantine-font-family);
+}
