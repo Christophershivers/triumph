@@ -1,20 +1,33 @@
 import {useState, useRef} from 'react'
 import { useSigninEmailStore, useSigninButtonEmailStore } from '../../state-management/State'
-import { Input, Button, Typography  } from 'antd';
+import signinUser from '../utils/signinUser';
+import { useRouter } from 'next/navigation';
+import { PinInput } from '@mantine/core';
 
 function MagicCode() {
-    const { Title } = Typography;
     const {signinEmail, setSigninEmail} = useSigninEmailStore()
-    const {signinButtonEmail, setSigninButtonEmail} = useSigninButtonEmailStore()
+    const {setSigninButtonEmail} = useSigninButtonEmailStore()
     const [showError, setShowError] = useState(null)
-    const [isError, setIsError] = useState(false)
     const inputRef = useRef(null)
+    const router = useRouter()
 
-    const onChange = (text) =>{
+    const onChange = async (text) =>{
         
         console.log(text)
-        setSigninButtonEmail(false)
-        setSigninEmail('')
+        if(text.length == 6){
+            const isUserSignedin = await signinUser(signinEmail, text)
+            console.log(isUserSignedin)
+            if(isUserSignedin){
+                setShowError(null)
+                setSigninButtonEmail(false)
+                setSigninEmail('')
+                router.push('/')
+            }else{
+                setShowError({error: 'you entered the wrong code'})
+            }
+            
+        }
+        
     }
 
     const sharedProp = {
@@ -23,9 +36,9 @@ function MagicCode() {
 
   return (
     <div >
-        <div className='flex justify-center pb-[32px] text-xl'>Please Enter the Code</div>
-        <div className='flex justify-center'><Input.OTP variant="filled" {...showError} {...sharedProp} ref={inputRef} type="number" inputMode="decimal" pattern="[0-9]*" /></div>
-        {isError ? <div className='pt-2'><label>*Wrong Code</label></div> : null}
+        <div className='flex justify-center'>
+            <PinInput variant="filled" length={6} {...showError} {...sharedProp} ref={inputRef} type="number" inputMode="decimal" pattern="[0-9]*" oneTimeCode/>
+        </div>
     </div>
   )
 }
