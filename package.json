@@ -23,11 +23,16 @@
     "zustand": "^5.0.1"
   },
   "devDependencies": {
+    "@mantine/core": "^7.14.0",
+    "@mantine/form": "^7.14.0",
+    "@mantine/hooks": "^7.14.0",
     "@types/node": "22.9.0",
     "@types/react": "18.3.12",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
-    "postcss": "^8",
+    "postcss": "^8.4.49",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
     "tailwindcss": "^3.4.1"
   }
 }
