@@ -2,6 +2,7 @@ import { create } from "zustand";
 import {db, tx, id, Cursors} from '../utils/db'
 import { User } from "@instantdb/react";
 
+
 interface EmailState{
     signinEmail: string
     setSigninEmail: (signinEmail: string) => void

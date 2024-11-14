@@ -5,6 +5,7 @@ import '@mantine/core/styles.css';
 import { Roboto } from 'next/font/google'
 import { MantineProvider } from '@mantine/core';
 
+
 const roboto = Roboto({weight: '400' , subsets: ['latin']})
 
 export const metadata = {

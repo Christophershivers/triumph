@@ -1,37 +1,19 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { useSigninEmailStore, useSigninButtonEmailStore } from '../../state-management/State'
-import { Input, Typography  } from 'antd';
 import getMagicCode from '../utils/getMagicCode';
-import Link from "next/link";
-import {
-    Paper,
-    TextInput,
-    PasswordInput,
-    Checkbox,
-    Button,
-    Title,
-    Text,
-    Anchor,
-} from '@mantine/core';
+import { TextInput, Button } from '@mantine/core';
 
-function Demo() {
-  return <PinInput type="number" />
-}
 
 function Email() {
-    const { Title } = Typography;
-    const {signinEmail, setSigninEmail} = useSigninEmailStore()
-    const {signinButtonEmail, setSigninButtonEmail} = useSigninButtonEmailStore()
+    const { signinEmail, setSigninEmail } = useSigninEmailStore()
+    const { setSigninButtonEmail } = useSigninButtonEmailStore()
     const [showError, setShowError] = useState(null)
-    const [isError, setIsError] = useState(false)
 
     const sendEmailToMagicCode = () =>{
         if(signinEmail == ''){
-            setIsError(true)
             setShowError({error: "Please enter an email"})
         }else{
             getMagicCode(signinEmail)
-            setIsError(false)
             setShowError(null)
             setSigninButtonEmail(true)
         }
