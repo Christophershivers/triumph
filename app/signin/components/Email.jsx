@@ -1,6 +1,22 @@
 import {useState} from 'react'
 import { useSigninEmailStore, useSigninButtonEmailStore } from '../../state-management/State'
-import { Input, Button, Typography  } from 'antd';
+import { Input, Typography  } from 'antd';
+import getMagicCode from '../utils/getMagicCode';
+import Link from "next/link";
+import {
+    Paper,
+    TextInput,
+    PasswordInput,
+    Checkbox,
+    Button,
+    Title,
+    Text,
+    Anchor,
+} from '@mantine/core';
+
+function Demo() {
+  return <PinInput type="number" />
+}
 
 function Email() {
     const { Title } = Typography;
@@ -12,8 +28,9 @@ function Email() {
     const sendEmailToMagicCode = () =>{
         if(signinEmail == ''){
             setIsError(true)
-            setShowError({status:"error", placeholder:"enter an email"})
+            setShowError({error: "Please enter an email"})
         }else{
+            getMagicCode(signinEmail)
             setIsError(false)
             setShowError(null)
             setSigninButtonEmail(true)
@@ -32,10 +49,8 @@ function Email() {
 
     return (
         <div>
-            <div className='flex justify-center pb-[32px] text-xl'>Login or Register</div>
-            <Input {...showError} placeholder='enter email' value={signinEmail} onChange={e => {setSigninEmail(e.target.value)}} onKeyDown={onEnterPress}/>
-            {isError ? <div className='pt-2'><label>Please enter a email</label></div> : null}
-            <div className='pt-[21px]'><Button onClick={onButtonClick} className='w-full' color="default" variant="solid">Sign In</Button></div>
+            <TextInput {...showError} placeholder='enter email' value={signinEmail} onChange={e => {setSigninEmail(e.target.value)}} onKeyDown={onEnterPress}/>
+            <div className='pt-[21px]'><Button onClick={onButtonClick} fullWidth color='rgb(24, 24, 27)'>Sign In</Button></div>
         </div>
     )
 }
