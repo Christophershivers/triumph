@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from 'react'
-import { useAuthUser } from '../state-management/State'
+import { useAuthUser } from '../../state-management/State'
 function GetUser() {
     const user = useAuthUser()
 

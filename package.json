@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@awesome.me/kit-b0e1082668": "^1.0.4",
     "@instantdb/react": "^0.14.27",
+    "@mantinex/mantine-logo": "^1.0.1",
+    "@tabler/icons-react": "^3.22.0",
     "antd": "^5.22.0",
     "dotenv": "^16.4.5",
     "instantsearch.css": "^8.5.1",
@@ -17,6 +20,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-instantsearch-dom": "^6.40.4",
+    "sass": "^1.80.7",
     "styled-components": "^6.1.13",
     "typesense": "^1.8.2",
     "typesense-instantsearch-adapter": "^2.8.0",

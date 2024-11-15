@@ -1,12 +1,13 @@
 import {useState, useRef} from 'react'
-import { useSigninEmailStore, useSigninButtonEmailStore } from '../../state-management/State'
+import { useSigninEmailStore, useSigninButtonEmailStore, useEnteredCodeYetStore } from '../../../state-management/State'
 import signinUser from '../utils/signinUser';
 import { useRouter } from 'next/navigation';
-import { PinInput } from '@mantine/core';
+import { PinInput, Loader  } from '@mantine/core';
 
 function MagicCode() {
     const {signinEmail, setSigninEmail} = useSigninEmailStore()
-    const {setSigninButtonEmail} = useSigninButtonEmailStore()
+    const {signinButtonEmail, setSigninButtonEmail} = useSigninButtonEmailStore()
+    const { enteredCode, setEnteredCode } = useEnteredCodeYetStore()
     const [showError, setShowError] = useState(null)
     const inputRef = useRef(null)
     const router = useRouter()
@@ -19,7 +20,7 @@ function MagicCode() {
             console.log(isUserSignedin)
             if(isUserSignedin){
                 setShowError(null)
-                setSigninButtonEmail(false)
+                setEnteredCode(true)
                 setSigninEmail('')
                 router.push('/')
             }else{
@@ -37,7 +38,12 @@ function MagicCode() {
   return (
     <div >
         <div className='flex justify-center'>
-            <PinInput variant="filled" length={6} {...showError} {...sharedProp} ref={inputRef} type="number" inputMode="decimal" pattern="[0-9]*" oneTimeCode/>
+            
+            {enteredCode ? 
+                <Loader color="blue" />
+                :
+                <PinInput variant="filled" length={6} {...showError} {...sharedProp} ref={inputRef} type="number" inputMode="decimal" pattern="[0-9]*" oneTimeCode/> 
+            }
         </div>
     </div>
   )

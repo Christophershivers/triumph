@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import {db, tx, id, Cursors} from '../utils/db'
+import {db, tx, id, Cursors} from '../(entire_site)/utils/db'
 import { User } from "@instantdb/react";
 
 
@@ -11,6 +11,11 @@ interface EmailState{
 interface EmailButtonState{
     signinButtonEmail: boolean
     setSigninButtonEmail: (signinButtonEmail: boolean) => void
+}
+
+interface EnteredCodeYetState{
+    enteredCode: boolean
+    setEnteredCode: (signinButtonEmail: boolean) => void
 }
 
 interface AuthState{
@@ -26,6 +31,11 @@ export const useSigninEmailStore = create<EmailState>()((set) =>({
 export const useSigninButtonEmailStore = create<EmailButtonState>() ((set) =>({
     signinButtonEmail: false,
     setSigninButtonEmail: (signinButtonEmail: boolean) => set({signinButtonEmail})
+}))
+
+export const useEnteredCodeYetStore = create<EnteredCodeYetState>() ((set) =>({
+    enteredCode: false,
+    setEnteredCode: (enteredCode: boolean) => set({enteredCode})
 }))
 
 export const useAuthStore = create<AuthState>() ((set) =>({

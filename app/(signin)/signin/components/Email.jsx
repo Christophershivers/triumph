@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSigninEmailStore, useSigninButtonEmailStore } from '../../state-management/State'
+import { useSigninEmailStore, useSigninButtonEmailStore } from '../../../state-management/State'
 import getMagicCode from '../utils/getMagicCode';
 import { TextInput, Button } from '@mantine/core';
 

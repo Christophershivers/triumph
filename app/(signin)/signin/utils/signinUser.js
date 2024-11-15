@@ -1,4 +1,4 @@
-import {db} from '../../utils/db'
+import {db} from '../../../(entire_site)/utils/db'
 
 
 async function signinUser(email, pin) {

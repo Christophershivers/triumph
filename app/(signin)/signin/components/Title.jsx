@@ -1,6 +1,6 @@
 import React from 'react'
 import { Title, Text } from '@mantine/core';
-import { useSigninButtonEmailStore, useSigninEmailStore } from '../../state-management/State';
+import { useSigninButtonEmailStore, useSigninEmailStore } from '../../../state-management/State';
 import classes from './css/AuthenticationImage.module.css';
 
 
