@@ -1,9 +1,10 @@
 import React from 'react'
+import Profile from './components/Profile.jsx'
 
 function page() {
   return (
-    <div>
-      <h1>profile</h1>
+    <div className=''>
+      <Profile/>
     </div>
   )
 }

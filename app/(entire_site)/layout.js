@@ -4,7 +4,7 @@ import "../globals.css";
 import "../fonts/icons/css/all.css"
 import GetUser from "./components/GetUser";
 import { Roboto } from 'next/font/google'
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, Container } from '@mantine/core';
 import SideNav from './components/SideNav.jsx'
 import MobileNav from './components/MobileNav.jsx'
 
@@ -24,14 +24,16 @@ export default function RootLayout({ children }) {
       >
         <MantineProvider>
           <GetUser/>
-          <div className='flex-col '>
-            <div className='flex'>
-              <div className='hidden md:block'><SideNav/></div>
-              <div>
-                {children}
+          <div className='flex-col'>
+            <Container size='responsive'>
+              <div className='flex gap-x-2'>
+                <div className='hidden md:block'><SideNav/></div>
+                <div className='grow max-w-[1400px] mx-auto'>
+                  {children}
+                </div>
               </div>
-            </div>
-            <div className='fixed bottom-0 block md:hidden '><MobileNav/></div>
+            </Container>
+            <div className='  fixed bottom-0 block md:hidden'><MobileNav/></div>
           </div>
         </MantineProvider>
       </body>
